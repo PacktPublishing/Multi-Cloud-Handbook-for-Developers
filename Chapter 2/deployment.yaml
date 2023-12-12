@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-node-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-node-app
+  template:
+    metadata:
+      labels:
+        app: my-node-app
+    spec:
+      containers:
+      - name: my-node-app
+        image: jeveenj/my-node-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        - containerPort: 3001
+      # Correct placement for imagePullSecrets
+      imagePullSecrets:
+      - name: my-docker-hub-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-node-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-node-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      name: main-app
+      targetPort: 3000
+    - protocol: TCP
+      port: 3001
+      name: admin-process
+      targetPort: 3001
