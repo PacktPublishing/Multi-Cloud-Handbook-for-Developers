@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh '''docker build -t python-hello-world .
+                docker tag python-hello-world jeveenj/python-hello-world
+                docker push jeveenj/python-hello-world
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker run --rm python-hello-world:latest python -m unittest'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+            }
+        }
+    }
+}
