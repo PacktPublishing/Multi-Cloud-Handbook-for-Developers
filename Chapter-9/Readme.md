@@ -16,6 +16,8 @@ Plan the changes:
 Apply the changes:
 `terraform apply`
 
+Delete the changes:
+`terraform destroy`
 
 ## Notes:
 - Adjust region and project names as needed.
