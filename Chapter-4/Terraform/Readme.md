@@ -25,7 +25,7 @@ View outputs:
 `terraform output`
 
 Delete the changes: 
-`terraform output`
+`terraform destroy`
 
 ## Notes:
 - Adjust region and project names as needed.
