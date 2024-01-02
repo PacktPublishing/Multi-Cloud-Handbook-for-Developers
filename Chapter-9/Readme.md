@@ -16,8 +16,6 @@ Plan the changes:
 Apply the changes:
 `terraform apply`
 
-View outputs:
-`terraform output`
 
 ## Notes:
 - Adjust region and project names as needed.
