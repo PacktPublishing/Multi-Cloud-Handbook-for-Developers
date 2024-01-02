@@ -24,6 +24,9 @@ Apply the changes:
 View outputs:
 `terraform output`
 
+Delete the changes: 
+`terraform output`
+
 ## Notes:
 - Adjust region and project names as needed.
 - Consider adding more resources (e.g., subnets, security groups) to suit your specific requirements.
